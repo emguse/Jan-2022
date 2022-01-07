@@ -16,7 +16,13 @@ display.brightness = 0.5
 while True:
     temperature = round(max31855.temperature, 1)
     #print('Temperature: {} deg'.format(temperature))
-    print((temperature,))
+    #print((temperature,)) # Tuples for graphing in Mu's plotter
+    print(temperature)
     display.fill(0)
-    display.print(str(temperature))
+    if temperature <= -100:
+        display.print(str(int(temperature)))
+    elif temperature >= 1000:
+        display.print(str(int(temperature)))
+    else:
+        display.print(str(temperature))
     time.sleep(1)
