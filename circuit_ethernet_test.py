@@ -33,8 +33,8 @@ onbord_neopix.rainbow_step()
 print("socket Test")
 onbord_neopix.rainbow_step(64)
 
-TEXT_URL = "http://wifitest.adafruit.com/testwifi/index.html"
-JSON_URL = "http://api.coindesk.com/v1/bpi/currentprice/USD.json"
+TEXT_URL = "http://example.com/"
+JSON_URL = "http://httpbin.org/ip"
 onbord_neopix.rainbow_step(64)
 
 cs = digitalio.DigitalInOut(board.D10)
