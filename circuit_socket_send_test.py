@@ -32,7 +32,7 @@ onbord_neopix.rainbow_step()
 print("socket Test")
 onbord_neopix.rainbow_step(64)
 
-host = "192.168.50.35"
+host = "192.168.XXX.XXX"
 port = 4000
 time_out = 5
 
