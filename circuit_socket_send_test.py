@@ -51,7 +51,7 @@ soc.settimeout(time_out)
 print("Connecting")
 soc.connect((host, port))
 
-size = s.send(b'Hello, world')
+size = soc.send(b'Hello, world')
 print("Sent", size, "bytes")
 
 soc.close()
