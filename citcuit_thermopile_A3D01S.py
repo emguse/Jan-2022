@@ -6,6 +6,8 @@ from rainbowio import colorwheel
 import neopixel
 
 '''
+- Applicable to Nippon Ceramic's thermopile sensor 'A3D01S-FU-50-60'
+- !!! Attention!!! I haven't tested it on a real machine yet.
 - 2022/01/19 ver.0.01
 - Author : emguse
 - License: MIT License
