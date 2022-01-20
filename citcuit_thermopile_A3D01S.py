@@ -8,7 +8,7 @@ import neopixel
 '''
 - Applicable to Nippon Ceramic's thermopile sensor 'A3D01S-FU-50-60'
 - !!! Attention!!! I haven't tested it on a real machine yet.
-- 2022/01/19 ver.0.01
+- 2022/01/20 ver.0.02
 - Author : emguse
 - License: MIT License
 '''
@@ -64,8 +64,8 @@ def main():
         onbord_neopix.rainbow_step()
         a3d01s.self_temperature()
         a3d01s.object_temperature()
-        print("self_temp  : ", str(a3d01s.self_temperature))
-        print("object_temp: ", str(a3d01s.object_temperature))
+        print("self_temp  : ", str(a3d01s.self_temp))
+        print("object_temp: ", str(a3d01s.object_temp))
         time.sleep(0.5)
 
 if __name__ == "__main__":
