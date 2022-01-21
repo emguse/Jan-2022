@@ -7,8 +7,7 @@ import neopixel
 
 '''
 - Applicable to Nippon Ceramic's thermopile sensor 'A3D01S-FU-50-60'
-- !!! Attention!!! I haven't tested it on a real machine yet.
-- 2022/01/20 ver.0.02
+- 2022/01/22 ver.1.00
 - Author : emguse
 - License: MIT License
 '''
@@ -16,24 +15,26 @@ import neopixel
 I2C_ADDRES = 0x3D
 
 class ThermopileInfraredSensorA3D01S_FU_50_60():
-    def __init__(self, i2c: I2C) -> None:
+    def __init__(self, i2c) -> None:
         time.sleep(0.05)
         self.a3d01s_addres = I2C_ADDRES
-        self.device = I2CDevice(i2c, self.d6f_addres)
+        self.device = I2CDevice(i2c, self.a3d01s_addres)
         self.self_temp = 0
         self.object_temp = 0
     def self_temperature(self):
-        read_addres = bytes([0x70])
-        raw = bytearray(3)
-        self.device.write_then_readinto(read_addres, raw)
-        pv = (raw[0] << 8 | raw[1]) | 0x0FFF
-        self.self_temp = pv / 8 - 20 # Celsius degree
+        with self.device:
+            read_addres = bytes([0x70])
+            raw = bytearray(3)
+            self.device.write_then_readinto(read_addres, raw)
+            pv = (raw[0] | raw[1] << 8)
+            self.self_temp = pv / 8 - 20 # Celsius degree
     def object_temperature(self):
-        read_addres = bytes([0x71])
-        raw = bytearray(3)
-        self.device.write_then_readinto(read_addres, raw)
-        pv = (raw[0] << 8 | raw[1]) | 0x0FFF
-        self.object_temp = pv / 8 - 30 # Celsius degree
+        with self.device:
+            read_addres = bytes([0x71])
+            raw = bytearray(3)
+            self.device.write_then_readinto(read_addres, raw)
+            pv = (raw[0] | raw[1] << 8)
+            self.object_temp = pv / 8 - 30 # Celsius degree
         
 class OnbordNeopix():
     def __init__(self) -> None:
