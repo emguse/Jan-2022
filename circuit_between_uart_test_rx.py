@@ -15,7 +15,7 @@ while True:
     if now - last_time >= INTERVAL:
         s = n
         #uart.write(bytes(f"{s}", "ascii"))
-        print("sending value", s)
+        #print("sending value", s)
         n = n + 1
         last_time = now
     byte_read = uart.read(1)
@@ -27,8 +27,12 @@ while True:
         continue
     if message_started:
         if byte_read == b">":
-            print(message)
+            #print(message)
+            msg = ""
+            for s in message:
+                msg += s
+            print(msg)
             message_started = False
         else:
             message.append(chr(byte_read[0]))
-
+            #print(message)
