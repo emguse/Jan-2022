@@ -12,7 +12,7 @@ from adafruit_display_text import label
 class OnbordNeopix():
     def __init__(self) -> None:
         self.pixel = neopixel.NeoPixel(board.GP16, 1, auto_write=False)
-        self.pixel.brightness = 0.2
+        self.pixel.brightness = 0.1
         self.color_step = 0
 
     def rainbow(self, delay):
@@ -74,6 +74,9 @@ def main():
         display.show(now)
 
         uart.write(bytes(f"<{tmp}>", "ascii"))
+        uart.write(bytes(f"<{hum}>", "ascii"))
+        uart.write(bytes(f"<{prs}>", "ascii"))
+        uart.write(bytes(f"<{alt}>", "ascii"))
         time.sleep(3)
 
 if __name__ == '__main__':
